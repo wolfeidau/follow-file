@@ -19,7 +19,7 @@ As illustrated in the following example program this module can be used as an
 endless stream. Note in this example I am using through to inject new
 lines for presentations sake.
 
-```
+```js
 ff(argv.file).stream.pipe(through(function write(data) {
      log('data', data)
      this.emit('data', data + '\n')
