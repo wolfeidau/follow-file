@@ -2,7 +2,9 @@
   "name": "follow-file",
   "version": "0.1.0",
   "description": "Provide a simple way to watch and a file even if it is truncated.",
+  "homepage": "https://github.com/wolfeidau/follow-file",
   "main": "index.js",
+  "bin": "bin/follow-file",
   "scripts": {
     "test": "make test"
   },
@@ -11,17 +13,14 @@
     "url": "https://github.com/wolfeidau/instruments.git"
   },
   "keywords": [
-    "metrics",
-    "gauges",
-    "monitoring"
+    "file",
+    "tail"
   ],
   "author": "Mark Wolfe <mark@wolfe.id.au>",
   "license": "MIT",
   "devDependencies": {
     "chai": "~1.6.0",
-    "sinon": "~1.7.2",
-    "mocha": "~1.10.0",
-    "passport-http": "~0.2.2"
+    "mocha": "~1.10.0"
   },
   "dependencies": {
     "debug": "~0.7.2",
