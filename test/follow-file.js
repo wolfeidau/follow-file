@@ -10,7 +10,7 @@ describe('Follow', function(){
 
     var lines = 0
 
-    ff(path.join(__dirname, 'syslog.log')).stream.on('data', function(line){
+    ff(path.join(__dirname, 'syslog.log')).follow().on('data', function(line){
       lines++
       if(lines === 8){
         done()

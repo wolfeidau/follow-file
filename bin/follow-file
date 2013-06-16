@@ -19,12 +19,8 @@ var argv = optimist
 
 log('Opening', argv.file)
 
-ff(argv.file).stream.pipe(through(function write(data) {
+ff(argv.file).follow().pipe(through(function write(data) {
     log('data', data)
     this.emit('data', data + '\n')
-  },
-  function end() { //optional
-    log('end')
-    this.emit('end')
   }))
   .pipe(process.stdout)
