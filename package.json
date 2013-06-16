@@ -1,6 +1,6 @@
 {
   "name": "follow-file",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Provide a simple way to watch and a file even if it is truncated.",
   "homepage": "https://github.com/wolfeidau/follow-file",
   "main": "index.js",
