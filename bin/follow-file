@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+"use strict";
+
+var optimist = require('optimist')
+var through = require('through')
+var log = require('debug')('follow-file:cli')
+
+var ff = require('../index.js')
+
+process.title = 'follow-file'
+
+var argv = optimist
+  .usage('Usage: $0 -f [file]')
+  .demand(['f'])
+  .alias('f', 'file')
+  .describe('f', 'File containing syslog data.')
+  .argv
+
+
+log('Opening', argv.file)
+
+ff(argv.file).stream.pipe(through(function write(data) {
+    log('data', data)
+    this.emit('data', data + '\n')
+  },
+  function end() { //optional
+    log('end')
+    this.emit('end')
+  }))
+  .pipe(process.stdout)

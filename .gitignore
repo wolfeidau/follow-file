@@ -1,0 +1,6 @@
+/node_modules
+/results.xml
+/results.tap
+syslog.log*
+v8.log
+/*.log
