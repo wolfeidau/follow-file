@@ -2,7 +2,7 @@
 
 This module is designed to follow a file which is being appended to by
 something like a syslog server. It will reopen the file if the file is 
-truncated.
+truncated and recover from file being removed and recreated.
 
 # Example
 

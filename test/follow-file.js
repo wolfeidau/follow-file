@@ -66,9 +66,11 @@ describe('Follow', function () {
 
     var lines = 0
     var totalLines = 100
+    var deleted = false
     ff(path.join(__dirname, 'tmp', 'syslog.log')).follow().on('data', function (line) {
       log('lines++', lines++)
       if (lines === totalLines) {
+        log('all done')
         done()
       }
 
@@ -76,8 +78,11 @@ describe('Follow', function () {
 
     setInterval(function(){
       log('lines are', lines)
-      if (lines === 81){
+      if (lines === 81 && !deleted){
+        deleted = true
+        log('delete file')
         fs.unlink(path.join(__dirname, 'tmp', 'syslog.log'), function(){
+          log('create file.')
           var stream = fs.createWriteStream(path.join(__dirname, 'tmp', 'syslog.log'), {flags: 'w'})
           writeRemaining(stream, 20, function(){
             log('finished')
