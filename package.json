@@ -28,6 +28,8 @@
     "debug": "~0.7.2",
     "through": "~2.3.4",
     "split": "~0.2.5",
-    "optimist": "~0.5.2"
+    "optimist": "~0.5.2",
+    "tailing-stream": "0.0.4",
+    "which": "~1.0.5"
   }
 }

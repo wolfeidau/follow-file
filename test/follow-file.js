@@ -23,7 +23,8 @@ describe('Follow', function () {
 
     var lines = 0
 
-    ff(path.join(__dirname, 'syslog.log')).follow().on('data', function (line) {
+    ff(path.join(__dirname, 'syslog.log')).on('data', function (line) {
+      log('line', line)
       lines++
       if (lines === 8) {
         done()
@@ -44,7 +45,7 @@ describe('Follow', function () {
           var lines = 0
           var totalLines = 80
 
-          ff(path.join(__dirname, 'tmp', 'syslog.log')).follow().on('data', function (line) {
+          ff(path.join(__dirname, 'tmp', 'syslog.log')).on('data', function (line) {
             log('lines++', lines++)
             if (lines === totalLines) {
               done()
@@ -67,7 +68,7 @@ describe('Follow', function () {
     var lines = 0
     var totalLines = 100
     var deleted = false
-    ff(path.join(__dirname, 'tmp', 'syslog.log')).follow().on('data', function (line) {
+    ff(path.join(__dirname, 'tmp', 'syslog.log')).on('data', function (line) {
       log('lines++', lines++)
       if (lines === totalLines) {
         log('all done')
@@ -78,7 +79,7 @@ describe('Follow', function () {
 
     setInterval(function(){
       log('lines are', lines)
-      if (lines === 81 && !deleted){
+      if (lines === 80 && !deleted){
         deleted = true
         log('delete file')
         fs.unlink(path.join(__dirname, 'tmp', 'syslog.log'), function(){
